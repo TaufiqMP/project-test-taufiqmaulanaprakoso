@@ -10,7 +10,7 @@ export default defineConfig({
       '/api': {
         target: 'https://suitmedia-backend.suitdev.com',
         changeOrigin: true,
-        secure: true,
+        secure: false,
       },
     },
   },
