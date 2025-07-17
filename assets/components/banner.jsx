@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+//efek paralax
 function Banner({ imageUrl }) {
   const [offsetY, setOffsetY] = useState(0)
 

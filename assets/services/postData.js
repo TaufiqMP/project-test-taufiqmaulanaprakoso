@@ -1,4 +1,5 @@
 import logo from '../images/logo-suit.png';
+import study from '../images/study1.jpg';
 
 const postData = [
   {
@@ -10,7 +11,7 @@ const postData = [
   },
   {
     id: 2,
-    imageUrl: logo,
+    imageUrl: study,
     date: "3 SEPTEMBER 2022",
     title: "Jangan Asal Pilih Influencer, Berikut Cara Menyusun Strategi Influencer Marketing",
     description: "Cara menyusun strategi influencer marketing agar hasilnya optimal dan budget lebih efisien."
@@ -24,7 +25,7 @@ const postData = [
   },
   {
     id: 4,
-    imageUrl: logo,
+    imageUrl: study,
     date: "4 SEPTEMBER 2022",
     title: "Kenali Tingkatan Influencers berdasarkan Jumlah Followers",
     description: "Kenali tingkatan influencers berdasarkan jumlah followers untuk strategi pemasaran yang tepat sasaran."
@@ -38,7 +39,7 @@ const postData = [
   },
   {
     id: 6,
-    imageUrl: logo,
+    imageUrl: study,
     date: "11 SEPTEMBER 2022",
     title: "Kenali Tingkatan Influencers berdasarkan Jumlah Followers",
     description: "Kenali tingkatan influencers berdasarkan jumlah followers untuk strategi pemasaran yang tepat sasaran."
@@ -52,7 +53,7 @@ const postData = [
   },
     {
     id: 8,
-    imageUrl: logo,
+    imageUrl: study,
     date: "15 SEPTEMBER 2022",
     title: "Kenali Tingkatan Influencers berdasarkan Jumlah Followers",
     description: "Kenali tingkatan influencers berdasarkan jumlah followers untuk strategi pemasaran yang tepat sasaran."
@@ -66,7 +67,7 @@ const postData = [
   },
     {
     id: 10,
-    imageUrl: logo,
+    imageUrl: study,
     date: "20 SEPTEMBER 2022",
     title: "Kenali Tingkatan Influencers berdasarkan Jumlah Followers",
     description: "Kenali tingkatan influencers berdasarkan jumlah followers untuk strategi pemasaran yang tepat sasaran."
@@ -80,7 +81,7 @@ const postData = [
   },
     {
     id: 12,
-    imageUrl: logo,
+    imageUrl: study,
     date: "22 SEPTEMBER 2022",
     title: "Kenali Tingkatan Influencers berdasarkan Jumlah Followers",
     description: "Kenali tingkatan influencers berdasarkan jumlah followers untuk strategi pemasaran yang tepat sasaran."

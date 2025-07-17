@@ -5,13 +5,14 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
 
+  //Efek scroll kebawah ke atas
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setShowHeader(false) // scroll down -> hide
+        setShowHeader(false)
       } else {
-        setShowHeader(true) // scroll up -> show
+        setShowHeader(true) 
       }
       setLastScrollY(currentScrollY)
     }
