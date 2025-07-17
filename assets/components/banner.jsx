@@ -1,27 +1,33 @@
-import { useState } from 'react'
-import banner from '../images/banner.jpg';
+import { useState, useEffect } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+function Banner({ imageUrl }) {
+  const [offsetY, setOffsetY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setOffsetY(window.scrollY)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <>
     <div
-      className="relative h-[400px] bg-cover bg-center mb-20"
+      className="relative h-[500px] bg-cover bg-center overflow-hidden mb-20"
       style={{
-        backgroundImage: `url(${banner})`,
-        clipPath: 'polygon(0 0, 100% 0, 100% 60%, 0% 100%)',
+        backgroundImage: `url(${imageUrl})`,
+        clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0% 100%)',
+        backgroundPositionY: `${offsetY * 0.5}px`, 
       }}
     >
       <div className="h-full flex items-center justify-center text-white">
-        <div className="text-center">
-          <h1 className="text-4xl font-weight-500">Ideas</h1>
+        <div className="text-center" style={{ transform: `translateY(${offsetY * 0.2}px)` }}>
+          <h1 className="text-4xl font-bold">Ideas</h1>
           <p className="text-lg">Where all our great things begin</p>
         </div>
       </div>
     </div>
-    </>
   )
 }
 
-export default App
+export default Banner

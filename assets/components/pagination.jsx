@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostCard from "./postcard.jsx";
 import postData from "../services/postData.js";
 
 export default function Pagination() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [sortBy, setSortBy] = useState("Newest");
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(localStorage.getItem("currentPage")) || 1
+  );
+  const [itemsPerPage, setItemsPerPage] = useState(
+    parseInt(localStorage.getItem("itemsPerPage")) || 10
+  );
+  const [sortBy, setSortBy] = useState(
+    localStorage.getItem("sortBy") || "Newest"
+  );
 
-  // Sort data kalau perlu
-  const sortedData = [...postData]; // ganti sesuai logika sort
+  // ✅ Simpan ke localStorage setiap ada perubahan
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+    localStorage.setItem("itemsPerPage", itemsPerPage);
+    localStorage.setItem("sortBy", sortBy);
+  }, [currentPage, itemsPerPage, sortBy]);
+
+  // ✅ Sort benar-benar berdasarkan tanggal
+  const sortedData = [...postData].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    if (sortBy === "Newest") return dateB - dateA;
+    return dateA - dateB;
+  });
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -27,7 +45,7 @@ export default function Pagination() {
 
   const handleSortByChange = (e) => {
     setSortBy(e.target.value);
-    // sorting logika di sini kalau mau benar-benar sort
+    setCurrentPage(1);
   };
 
   const renderPageNumbers = () => {
@@ -69,9 +87,9 @@ export default function Pagination() {
               onChange={handleItemsPerPageChange}
               className="border rounded px-2 py-1"
             >
-              <option value="6">6</option>
               <option value="10">10</option>
               <option value="20">20</option>
+              <option value="50">50</option>
             </select>
           </label>
           <label className="text-sm">
@@ -111,9 +129,7 @@ export default function Pagination() {
           &laquo;
         </button>
         <button
-          onClick={() =>
-            currentPage > 1 && handlePageClick(currentPage - 1)
-          }
+          onClick={() => currentPage > 1 && handlePageClick(currentPage - 1)}
           disabled={currentPage === 1}
           className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
         >
