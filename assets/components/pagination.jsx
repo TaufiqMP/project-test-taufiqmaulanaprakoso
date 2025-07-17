@@ -24,7 +24,7 @@ export default function Pagination() {
     const fetchPosts = async () => {
       try {
         const sortParam = sortBy === "Newest" ? "-published_at" : "published_at";
-        const url = `/api/ideas?page[number]=${currentPage}&page[size]=${itemsPerPage}&append[]=small_image&append[]=medium_image&sort=${sortParam}`;
+        const url = `https://suitmedia-backend.suitdev.com/api/ideas?page[number]=${currentPage}&page[size]=${itemsPerPage}&append[]=small_image&append[]=medium_image&sort=${sortParam}`;
 
         const response = await fetch(url, {
           headers: {
